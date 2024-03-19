@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ object.name }} Details</title>
+</head>
+<header>
+    <h1>Recipe Book</h1>
+    <nav>
+        {% if request.user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">LOG OUT</button>
+            </form>
+        {% else %}
+            <h3>Please <a href="{% url 'login' %}">login.</a></h3>
+        {% endif %}
+    </nav>
+</header>    
+<body>
+    <h1>{{ object.name }}</h1>
+    {% if request.user.is_authenticated %}
+        <p>Author: {{ object.author.profile.name }}</p>
+    {% endif %}
+    <ul>
+        {% for ingredient in object.ingredients.all %}
+            <li>{{ ingredient.quantity }} {{ ingredient.ingredient.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
