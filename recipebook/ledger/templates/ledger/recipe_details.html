@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>{{ object.name }}</h1>
+    <p>Author: {{ recipe.author.profile.name }}</p> 
     <ul>
         {% for ingredient in object.ingredients.all %}
             <li>{{ ingredient.quantity }} {{ ingredient.ingredient.name }}</li>
