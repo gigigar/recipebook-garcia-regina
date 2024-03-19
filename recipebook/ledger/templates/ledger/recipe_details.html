@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ object.name }}</h1>
     <p>Author: {{ object.author.profile.name }}</p>
     <ul>
         {% for ingredient in object.ingredients.all %}
