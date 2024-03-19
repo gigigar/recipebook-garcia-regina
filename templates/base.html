@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Recipebook
+        {% endblock title %}
+    </title>
+    {% block styles %}
+    <style>
+        /* Add your CSS styles here */
+    </style>
+    {% endblock styles %}
+</head>
+<body>
+<header>
+    <h1>Recipe Book</h1>
+    <h2>
+        {% block location %}
+        {% endblock location %}
+    </h2>
+</header>
+<main>
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <div>
+        {% block userflow %}
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        {% endblock userflow %}
+    </div>
+</main>
+{% block scripts %}
+<script>
+    // Add your JavaScript code here
+</script>
+{% endblock scripts %}
+</body>
+</html>
