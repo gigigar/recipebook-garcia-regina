@@ -1,15 +1,20 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ object.name }} Details</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ object.name }} Details
+{% endblock %}
+
+{% block page_heading %}
+    {{ object.name }}
+{% endblock %}
+
+{% block content %}
     <h1>{{ object.name }}</h1>
-    <p>Author: {{ recipe.author.profile.name }}</p> 
+    <p>Author: {{ object.author.profile.name }}</p>
     <ul>
         {% for ingredient in object.ingredients.all %}
             <li>{{ ingredient.quantity }} {{ ingredient.ingredient.name }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

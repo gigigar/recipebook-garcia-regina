@@ -1,14 +1,19 @@
-<html>
-<head>
-    <title>Recipe List</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Recipe List
+{% endblock %}
+
+{% block page_heading %}
+    Recipe List
+{% endblock %}
+
+{% block content %}
     <h1>Recipe List</h1>
-    <p>Author: {{ recipe.author.profile.name }}</p> 
     <ul>
         {% for recipe in object_list %}
-        <li><a href="{% url 'ledger:recipe_details' pk=recipe.pk %}">{{ recipe.name }}</a></li>
+            <li><a href="{% url 'ledger:recipe_details' pk=recipe.pk %}">{{ recipe.name }}</a></li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
